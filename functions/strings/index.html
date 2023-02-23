@@ -1,0 +1,1544 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/Masterminds/sprig/functions/strings/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+    
+    
+      
+        <title>String - Sprig</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#string" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Sprig" class="md-header__button md-logo" aria-label="Sprig" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sprig
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              String
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Masterminds/sprig" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sprig
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sprig" class="md-nav__button md-logo" aria-label="Sprig" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Sprig
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Masterminds/sprig" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sprig
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Sprig Function Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/crypto/" class="md-nav__link">
+        Cryptographic and Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/network/" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/os/" class="md-nav__link">
+        OS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/reflection/" class="md-nav__link">
+        Reflection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/semver/" class="md-nav__link">
+        Semantic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/uuid/" class="md-nav__link">
+        UUID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conversion/" class="md-nav__link">
+        Type Conversion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../date/" class="md-nav__link">
+        Date
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defaults/" class="md-nav__link">
+        Default
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dicts/" class="md-nav__link">
+        Dictionaries and Dict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encoding/" class="md-nav__link">
+        Encoding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flow-control/" class="md-nav__link">
+        Flow Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integer-slice/" class="md-nav__link">
+        Integer Slice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lists/" class="md-nav__link">
+        Lists and List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math/" class="md-nav__link">
+        Integer Math
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mathf/" class="md-nav__link">
+        Float Math
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paths/" class="md-nav__link">
+        Path and Filepath
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../string-slice/" class="md-nav__link">
+        String Slice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          String
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        String
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trim" class="md-nav__link">
+    trim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trimall" class="md-nav__link">
+    trimAll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trimsuffix" class="md-nav__link">
+    trimSuffix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trimprefix" class="md-nav__link">
+    trimPrefix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upper" class="md-nav__link">
+    upper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lower" class="md-nav__link">
+    lower
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    title
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#untitle" class="md-nav__link">
+    untitle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeat" class="md-nav__link">
+    repeat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#substr" class="md-nav__link">
+    substr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nospace" class="md-nav__link">
+    nospace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trunc" class="md-nav__link">
+    trunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abbrev" class="md-nav__link">
+    abbrev
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abbrevboth" class="md-nav__link">
+    abbrevboth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initials" class="md-nav__link">
+    initials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#randalphanum-randalpha-randnumeric-and-randascii" class="md-nav__link">
+    randAlphaNum, randAlpha, randNumeric, and randAscii
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrap" class="md-nav__link">
+    wrap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapwith" class="md-nav__link">
+    wrapWith
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contains" class="md-nav__link">
+    contains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hasprefix-and-hassuffix" class="md-nav__link">
+    hasPrefix and hasSuffix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quote-and-squote" class="md-nav__link">
+    quote and squote
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cat" class="md-nav__link">
+    cat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indent" class="md-nav__link">
+    indent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nindent" class="md-nav__link">
+    nindent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    replace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plural" class="md-nav__link">
+    plural
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snakecase" class="md-nav__link">
+    snakecase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camelcase" class="md-nav__link">
+    camelcase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kebabcase" class="md-nav__link">
+    kebabcase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swapcase" class="md-nav__link">
+    swapcase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexmatch-mustregexmatch" class="md-nav__link">
+    regexMatch, mustRegexMatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexfindall-mustregexfindall" class="md-nav__link">
+    regexFindAll, mustRegexFindAll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexfind-mustregexfind" class="md-nav__link">
+    regexFind, mustRegexFind
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexreplaceall-mustregexreplaceall" class="md-nav__link">
+    regexReplaceAll, mustRegexReplaceAll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexreplaceallliteral-mustregexreplaceallliteral" class="md-nav__link">
+    regexReplaceAllLiteral, mustRegexReplaceAllLiteral
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexsplit-mustregexsplit" class="md-nav__link">
+    regexSplit, mustRegexSplit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexquotemeta" class="md-nav__link">
+    regexQuoteMeta
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also...
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../url/" class="md-nav__link">
+        URL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#trim" class="md-nav__link">
+    trim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trimall" class="md-nav__link">
+    trimAll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trimsuffix" class="md-nav__link">
+    trimSuffix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trimprefix" class="md-nav__link">
+    trimPrefix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upper" class="md-nav__link">
+    upper
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lower" class="md-nav__link">
+    lower
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    title
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#untitle" class="md-nav__link">
+    untitle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeat" class="md-nav__link">
+    repeat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#substr" class="md-nav__link">
+    substr
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nospace" class="md-nav__link">
+    nospace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trunc" class="md-nav__link">
+    trunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abbrev" class="md-nav__link">
+    abbrev
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abbrevboth" class="md-nav__link">
+    abbrevboth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initials" class="md-nav__link">
+    initials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#randalphanum-randalpha-randnumeric-and-randascii" class="md-nav__link">
+    randAlphaNum, randAlpha, randNumeric, and randAscii
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrap" class="md-nav__link">
+    wrap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapwith" class="md-nav__link">
+    wrapWith
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contains" class="md-nav__link">
+    contains
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hasprefix-and-hassuffix" class="md-nav__link">
+    hasPrefix and hasSuffix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quote-and-squote" class="md-nav__link">
+    quote and squote
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cat" class="md-nav__link">
+    cat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indent" class="md-nav__link">
+    indent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nindent" class="md-nav__link">
+    nindent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    replace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plural" class="md-nav__link">
+    plural
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snakecase" class="md-nav__link">
+    snakecase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camelcase" class="md-nav__link">
+    camelcase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kebabcase" class="md-nav__link">
+    kebabcase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swapcase" class="md-nav__link">
+    swapcase
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shuffle" class="md-nav__link">
+    shuffle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexmatch-mustregexmatch" class="md-nav__link">
+    regexMatch, mustRegexMatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexfindall-mustregexfindall" class="md-nav__link">
+    regexFindAll, mustRegexFindAll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexfind-mustregexfind" class="md-nav__link">
+    regexFind, mustRegexFind
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexreplaceall-mustregexreplaceall" class="md-nav__link">
+    regexReplaceAll, mustRegexReplaceAll
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexreplaceallliteral-mustregexreplaceallliteral" class="md-nav__link">
+    regexReplaceAllLiteral, mustRegexReplaceAllLiteral
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexsplit-mustregexsplit" class="md-nav__link">
+    regexSplit, mustRegexSplit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regexquotemeta" class="md-nav__link">
+    regexQuoteMeta
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also...
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Masterminds/sprig/edit/master/docs/functions/strings.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  
+
+
+
+<h1 id="string">String</h1>
+<p>Sprig has a number of string manipulation functions.</p>
+<h2 id="trim">trim</h2>
+<p>The <code>trim</code> function removes space from either side of a string:</p>
+<div class="highlight"><pre><span></span><code>trim &quot;   hello    &quot;
+</code></pre></div>
+<p>The above produces <code>hello</code></p>
+<h2 id="trimall">trimAll</h2>
+<p>Remove given characters from the front or back of a string:</p>
+<div class="highlight"><pre><span></span><code>trimAll &quot;$&quot; &quot;$5.00&quot;
+</code></pre></div>
+<p>The above returns <code>5.00</code> (as a string).</p>
+<h2 id="trimsuffix">trimSuffix</h2>
+<p>Trim just the suffix from a string:</p>
+<div class="highlight"><pre><span></span><code>trimSuffix &quot;-&quot; &quot;hello-&quot;
+</code></pre></div>
+<p>The above returns <code>hello</code></p>
+<h2 id="trimprefix">trimPrefix</h2>
+<p>Trim just the prefix from a string:</p>
+<div class="highlight"><pre><span></span><code>trimPrefix &quot;-&quot; &quot;-hello&quot;
+</code></pre></div>
+<p>The above returns <code>hello</code></p>
+<h2 id="upper">upper</h2>
+<p>Convert the entire string to uppercase:</p>
+<div class="highlight"><pre><span></span><code>upper &quot;hello&quot;
+</code></pre></div>
+<p>The above returns <code>HELLO</code></p>
+<h2 id="lower">lower</h2>
+<p>Convert the entire string to lowercase:</p>
+<div class="highlight"><pre><span></span><code>lower &quot;HELLO&quot;
+</code></pre></div>
+<p>The above returns <code>hello</code></p>
+<h2 id="title">title</h2>
+<p>Convert to title case:</p>
+<div class="highlight"><pre><span></span><code>title &quot;hello world&quot;
+</code></pre></div>
+<p>The above returns <code>Hello World</code></p>
+<h2 id="untitle">untitle</h2>
+<p>Remove title casing. <code>untitle "Hello World"</code> produces <code>hello world</code>.</p>
+<h2 id="repeat">repeat</h2>
+<p>Repeat a string multiple times:</p>
+<div class="highlight"><pre><span></span><code>repeat 3 &quot;hello&quot;
+</code></pre></div>
+<p>The above returns <code>hellohellohello</code></p>
+<h2 id="substr">substr</h2>
+<p>Get a substring from a string. It takes three parameters:</p>
+<ul>
+<li>start (int)</li>
+<li>end (int)</li>
+<li>string (string)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>substr 0 5 &quot;hello world&quot;
+</code></pre></div>
+<p>The above returns <code>hello</code></p>
+<h2 id="nospace">nospace</h2>
+<p>Remove all whitespace from a string.</p>
+<div class="highlight"><pre><span></span><code>nospace &quot;hello w o r l d&quot;
+</code></pre></div>
+<p>The above returns <code>helloworld</code></p>
+<h2 id="trunc">trunc</h2>
+<p>Truncate a string (and add no suffix)</p>
+<div class="highlight"><pre><span></span><code>trunc 5 &quot;hello world&quot;
+</code></pre></div>
+<p>The above produces <code>hello</code>.</p>
+<div class="highlight"><pre><span></span><code>trunc -5 &quot;hello world&quot;
+</code></pre></div>
+<p>The above produces <code>world</code>.</p>
+<h2 id="abbrev">abbrev</h2>
+<p>Truncate a string with ellipses (<code>...</code>)</p>
+<p>Parameters:</p>
+<ul>
+<li>max length</li>
+<li>the string</li>
+</ul>
+<div class="highlight"><pre><span></span><code>abbrev 5 &quot;hello world&quot;
+</code></pre></div>
+<p>The above returns <code>he...</code>, since it counts the width of the ellipses against the
+maximum length.</p>
+<h2 id="abbrevboth">abbrevboth</h2>
+<p>Abbreviate both sides:</p>
+<div class="highlight"><pre><span></span><code>abbrevboth 5 10 &quot;1234 5678 9123&quot;
+</code></pre></div>
+<p>the above produces <code>...5678...</code></p>
+<p>It takes:</p>
+<ul>
+<li>left offset</li>
+<li>max length</li>
+<li>the string</li>
+</ul>
+<h2 id="initials">initials</h2>
+<p>Given multiple words, take the first letter of each word and combine.</p>
+<div class="highlight"><pre><span></span><code>initials &quot;First Try&quot;
+</code></pre></div>
+<p>The above returns <code>FT</code></p>
+<h2 id="randalphanum-randalpha-randnumeric-and-randascii">randAlphaNum, randAlpha, randNumeric, and randAscii</h2>
+<p>These four functions generate cryptographically secure (uses <code>crypto/rand</code>)
+random strings, but with different base character sets:</p>
+<ul>
+<li><code>randAlphaNum</code> uses <code>0-9a-zA-Z</code></li>
+<li><code>randAlpha</code> uses <code>a-zA-Z</code></li>
+<li><code>randNumeric</code> uses <code>0-9</code></li>
+<li><code>randAscii</code> uses all printable ASCII characters</li>
+</ul>
+<p>Each of them takes one parameter: the integer length of the string.</p>
+<div class="highlight"><pre><span></span><code>randNumeric 3
+</code></pre></div>
+<p>The above will produce a random string with three digits.</p>
+<h2 id="wrap">wrap</h2>
+<p>Wrap text at a given column count:</p>
+<div class="highlight"><pre><span></span><code>wrap 80 $someText
+</code></pre></div>
+<p>The above will wrap the string in <code>$someText</code> at 80 columns.</p>
+<h2 id="wrapwith">wrapWith</h2>
+<p><code>wrapWith</code> works as <code>wrap</code>, but lets you specify the string to wrap with.
+(<code>wrap</code> uses <code>\n</code>)</p>
+<div class="highlight"><pre><span></span><code>wrapWith 5 &quot;\t&quot; &quot;Hello World&quot;
+</code></pre></div>
+<p>The above produces <code>hello world</code> (where the whitespace is an ASCII tab
+character)</p>
+<h2 id="contains">contains</h2>
+<p>Test to see if one string is contained inside of another:</p>
+<div class="highlight"><pre><span></span><code>contains &quot;cat&quot; &quot;catch&quot;
+</code></pre></div>
+<p>The above returns <code>true</code> because <code>catch</code> contains <code>cat</code>.</p>
+<h2 id="hasprefix-and-hassuffix">hasPrefix and hasSuffix</h2>
+<p>The <code>hasPrefix</code> and <code>hasSuffix</code> functions test whether a string has a given
+prefix or suffix:</p>
+<div class="highlight"><pre><span></span><code>hasPrefix &quot;cat&quot; &quot;catch&quot;
+</code></pre></div>
+<p>The above returns <code>true</code> because <code>catch</code> has the prefix <code>cat</code>.</p>
+<h2 id="quote-and-squote">quote and squote</h2>
+<p>These functions wrap a string in double quotes (<code>quote</code>) or single quotes
+(<code>squote</code>).</p>
+<h2 id="cat">cat</h2>
+<p>The <code>cat</code> function concatenates multiple strings together into one, separating
+them with spaces:</p>
+<div class="highlight"><pre><span></span><code>cat &quot;hello&quot; &quot;beautiful&quot; &quot;world&quot;
+</code></pre></div>
+<p>The above produces <code>hello beautiful world</code></p>
+<h2 id="indent">indent</h2>
+<p>The <code>indent</code> function indents every line in a given string to the specified
+indent width. This is useful when aligning multi-line strings:</p>
+<div class="highlight"><pre><span></span><code>indent 4 $lots_of_text
+</code></pre></div>
+<p>The above will indent every line of text by 4 space characters.</p>
+<h2 id="nindent">nindent</h2>
+<p>The <code>nindent</code> function is the same as the indent function, but prepends a new
+line to the beginning of the string.</p>
+<div class="highlight"><pre><span></span><code>nindent 4 $lots_of_text
+</code></pre></div>
+<p>The above will indent every line of text by 4 space characters and add a new
+line to the beginning.</p>
+<h2 id="replace">replace</h2>
+<p>Perform simple string replacement.</p>
+<p>It takes three arguments:</p>
+<ul>
+<li>string to replace</li>
+<li>string to replace with</li>
+<li>source string</li>
+</ul>
+<div class="highlight"><pre><span></span><code>&quot;I Am Henry VIII&quot; | replace &quot; &quot; &quot;-&quot;
+</code></pre></div>
+<p>The above will produce <code>I-Am-Henry-VIII</code></p>
+<h2 id="plural">plural</h2>
+<p>Pluralize a string.</p>
+<div class="highlight"><pre><span></span><code>len $fish | plural &quot;one anchovy&quot; &quot;many anchovies&quot;
+</code></pre></div>
+<p>In the above, if the length of the string is 1, the first argument will be
+printed (<code>one anchovy</code>). Otherwise, the second argument will be printed
+(<code>many anchovies</code>).</p>
+<p>The arguments are:</p>
+<ul>
+<li>singular string</li>
+<li>plural string</li>
+<li>length integer</li>
+</ul>
+<p>NOTE: Sprig does not currently support languages with more complex pluralization
+rules. And <code>0</code> is considered a plural because the English language treats it
+as such (<code>zero anchovies</code>). The Sprig developers are working on a solution for
+better internationalization.</p>
+<h2 id="snakecase">snakecase</h2>
+<p>Convert string from camelCase to snake_case.</p>
+<div class="highlight"><pre><span></span><code>snakecase &quot;FirstName&quot;
+</code></pre></div>
+<p>This above will produce <code>first_name</code>.</p>
+<h2 id="camelcase">camelcase</h2>
+<p>Convert string from snake_case to CamelCase</p>
+<div class="highlight"><pre><span></span><code>camelcase &quot;http_server&quot;
+</code></pre></div>
+<p>This above will produce <code>HttpServer</code>.</p>
+<h2 id="kebabcase">kebabcase</h2>
+<p>Convert string from camelCase to kebab-case.</p>
+<div class="highlight"><pre><span></span><code>kebabcase &quot;FirstName&quot;
+</code></pre></div>
+<p>This above will produce <code>first-name</code>.</p>
+<h2 id="swapcase">swapcase</h2>
+<p>Swap the case of a string using a word based algorithm.</p>
+<p>Conversion algorithm:</p>
+<ul>
+<li>Upper case character converts to Lower case</li>
+<li>Title case character converts to Lower case</li>
+<li>Lower case character after Whitespace or at start converts to Title case</li>
+<li>Other Lower case character converts to Upper case</li>
+<li>Whitespace is defined by unicode.IsSpace(char)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>swapcase &quot;This Is A.Test&quot;
+</code></pre></div>
+<p>This above will produce <code>tHIS iS a.tEST</code>.</p>
+<h2 id="shuffle">shuffle</h2>
+<p>Shuffle a string.</p>
+<div class="highlight"><pre><span></span><code>shuffle &quot;hello&quot;
+</code></pre></div>
+<p>The above will randomize the letters in <code>hello</code>, perhaps producing <code>oelhl</code>.</p>
+<h2 id="regexmatch-mustregexmatch">regexMatch, mustRegexMatch</h2>
+<p>Returns true if the input string contains any match of the regular expression.</p>
+<div class="highlight"><pre><span></span><code>regexMatch &quot;^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$&quot; &quot;test@acme.com&quot;
+</code></pre></div>
+<p>The above produces <code>true</code></p>
+<p><code>regexMatch</code> panics if there is a problem and <code>mustRegexMatch</code> returns an error to the
+template engine if there is a problem.</p>
+<h2 id="regexfindall-mustregexfindall">regexFindAll, mustRegexFindAll</h2>
+<p>Returns a slice of all matches of the regular expression in the input string.
+The last parameter n determines the number of substrings to return, where -1 means return all matches</p>
+<div class="highlight"><pre><span></span><code>regexFindAll &quot;[2,4,6,8]&quot; &quot;123456789&quot; -1
+</code></pre></div>
+<p>The above produces <code>[2 4 6 8]</code></p>
+<p><code>regexFindAll</code> panics if there is a problem and <code>mustRegexFindAll</code> returns an error to the
+template engine if there is a problem.</p>
+<h2 id="regexfind-mustregexfind">regexFind, mustRegexFind</h2>
+<p>Return the first (left most) match of the regular expression in the input string</p>
+<div class="highlight"><pre><span></span><code>regexFind &quot;[a-zA-Z][1-9]&quot; &quot;abcd1234&quot;
+</code></pre></div>
+<p>The above produces <code>d1</code></p>
+<p><code>regexFind</code> panics if there is a problem and <code>mustRegexFind</code> returns an error to the
+template engine if there is a problem.</p>
+<h2 id="regexreplaceall-mustregexreplaceall">regexReplaceAll, mustRegexReplaceAll</h2>
+<p>Returns a copy of the input string, replacing matches of the Regexp with the replacement string replacement.
+Inside string replacement, $ signs are interpreted as in Expand, so for instance $1 represents the text of the first submatch</p>
+<div class="highlight"><pre><span></span><code>regexReplaceAll &quot;a(x*)b&quot; &quot;-ab-axxb-&quot; &quot;${1}W&quot;
+</code></pre></div>
+<p>The above produces <code>-W-xxW-</code></p>
+<p><code>regexReplaceAll</code> panics if there is a problem and <code>mustRegexReplaceAll</code> returns an error to the
+template engine if there is a problem.</p>
+<h2 id="regexreplaceallliteral-mustregexreplaceallliteral">regexReplaceAllLiteral, mustRegexReplaceAllLiteral</h2>
+<p>Returns a copy of the input string, replacing matches of the Regexp with the replacement string replacement
+The replacement string is substituted directly, without using Expand</p>
+<div class="highlight"><pre><span></span><code>regexReplaceAllLiteral &quot;a(x*)b&quot; &quot;-ab-axxb-&quot; &quot;${1}&quot;
+</code></pre></div>
+<p>The above produces <code>-${1}-${1}-</code></p>
+<p><code>regexReplaceAllLiteral</code> panics if there is a problem and <code>mustRegexReplaceAllLiteral</code> returns an error to the
+template engine if there is a problem.</p>
+<h2 id="regexsplit-mustregexsplit">regexSplit, mustRegexSplit</h2>
+<p>Slices the input string into substrings separated by the expression and returns a slice of the substrings between those expression matches. The last parameter <code>n</code> determines the number of substrings to return, where <code>-1</code> means return all matches</p>
+<div class="highlight"><pre><span></span><code>regexSplit &quot;z+&quot; &quot;pizza&quot; -1
+</code></pre></div>
+<p>The above produces <code>[pi a]</code></p>
+<p><code>regexSplit</code> panics if there is a problem and <code>mustRegexSplit</code> returns an error to the
+template engine if there is a problem.</p>
+<h2 id="regexquotemeta">regexQuoteMeta</h2>
+<p>Returns a string that escapes all regular expression metacharacters inside the argument text;
+the returned string is a regular expression matching the literal text.</p>
+<div class="highlight"><pre><span></span><code>regexQuoteMeta &quot;1.2.3&quot;
+</code></pre></div>
+<p>The above produces <code>1\.2\.3</code></p>
+<h2 id="see-also">See Also...</h2>
+<p>The <a href="../conversion/">Conversion Functions</a> contain functions for converting
+strings. The <a href="../string-slice/">String Slice Functions</a> contains functions
+for working with an array of strings.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../string-slice/" class="md-footer__link md-footer__link--prev" aria-label="Previous: String Slice" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              String Slice
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../url/" class="md-footer__link md-footer__link--next" aria-label="Next: URL" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              URL
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.instant", "navigation.expand", "navigation.sections", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  </body>
+</html>

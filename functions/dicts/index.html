@@ -1,0 +1,1093 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/Masterminds/sprig/functions/dicts/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+    
+    
+      
+        <title>Dictionaries and Dict - Sprig</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dictionaries-and-dict" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Sprig" class="md-header__button md-logo" aria-label="Sprig" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sprig
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dictionaries and Dict
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Masterminds/sprig" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sprig
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sprig" class="md-nav__button md-logo" aria-label="Sprig" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Sprig
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Masterminds/sprig" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sprig
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Sprig Function Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Advanced
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/crypto/" class="md-nav__link">
+        Cryptographic and Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/network/" class="md-nav__link">
+        Network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/os/" class="md-nav__link">
+        OS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/reflection/" class="md-nav__link">
+        Reflection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/semver/" class="md-nav__link">
+        Semantic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/uuid/" class="md-nav__link">
+        UUID
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Functions" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Functions
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conversion/" class="md-nav__link">
+        Type Conversion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../date/" class="md-nav__link">
+        Date
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defaults/" class="md-nav__link">
+        Default
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dictionaries and Dict
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dictionaries and Dict
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dict" class="md-nav__link">
+    dict
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unset" class="md-nav__link">
+    unset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#haskey" class="md-nav__link">
+    hasKey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pluck" class="md-nav__link">
+    pluck
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    dig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-mustmerge" class="md-nav__link">
+    merge, mustMerge
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mergeoverwrite-mustmergeoverwrite" class="md-nav__link">
+    mergeOverwrite, mustMergeOverwrite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pick" class="md-nav__link">
+    pick
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#omit" class="md-nav__link">
+    omit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepcopy-mustdeepcopy" class="md-nav__link">
+    deepCopy, mustDeepCopy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-dict-internals" class="md-nav__link">
+    A Note on Dict Internals
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encoding/" class="md-nav__link">
+        Encoding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flow-control/" class="md-nav__link">
+        Flow Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integer-slice/" class="md-nav__link">
+        Integer Slice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lists/" class="md-nav__link">
+        Lists and List
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math/" class="md-nav__link">
+        Integer Math
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mathf/" class="md-nav__link">
+        Float Math
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../paths/" class="md-nav__link">
+        Path and Filepath
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../string-slice/" class="md-nav__link">
+        String Slice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../strings/" class="md-nav__link">
+        String
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../url/" class="md-nav__link">
+        URL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dict" class="md-nav__link">
+    dict
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unset" class="md-nav__link">
+    unset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#haskey" class="md-nav__link">
+    hasKey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pluck" class="md-nav__link">
+    pluck
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    dig
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-mustmerge" class="md-nav__link">
+    merge, mustMerge
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mergeoverwrite-mustmergeoverwrite" class="md-nav__link">
+    mergeOverwrite, mustMergeOverwrite
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keys" class="md-nav__link">
+    keys
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pick" class="md-nav__link">
+    pick
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#omit" class="md-nav__link">
+    omit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepcopy-mustdeepcopy" class="md-nav__link">
+    deepCopy, mustDeepCopy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-on-dict-internals" class="md-nav__link">
+    A Note on Dict Internals
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/Masterminds/sprig/edit/master/docs/functions/dicts.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  
+
+
+
+<h1 id="dictionaries-and-dict">Dictionaries and Dict</h1>
+<p>Sprig provides a key/value storage type called a <code>dict</code> (short for "dictionary",
+as in Python). A <code>dict</code> is an <em>unorder</em> type.</p>
+<p>The key to a dictionary <strong>must be a string</strong>. However, the value can be any
+type, even another <code>dict</code> or <code>list</code>.</p>
+<p>Unlike <code>list</code>s, <code>dict</code>s are not immutable. The <code>set</code> and <code>unset</code> functions will
+modify the contents of a dictionary.</p>
+<h2 id="dict">dict</h2>
+<p>Creating dictionaries is done by calling the <code>dict</code> function and passing it a
+list of pairs.</p>
+<p>The following creates a dictionary with three items:</p>
+<div class="highlight"><pre><span></span><code>$myDict := dict &quot;name1&quot; &quot;value1&quot; &quot;name2&quot; &quot;value2&quot; &quot;name3&quot; &quot;value 3&quot;
+</code></pre></div>
+<h2 id="get">get</h2>
+<p>Given a map and a key, get the value from the map.</p>
+<div class="highlight"><pre><span></span><code>get $myDict &quot;key1&quot;
+</code></pre></div>
+<p>The above returns <code>"value1"</code></p>
+<p>Note that if the key is not found, this operation will simply return <code>""</code>. No error
+will be generated.</p>
+<h2 id="set">set</h2>
+<p>Use <code>set</code> to add a new key/value pair to a dictionary.</p>
+<div class="highlight"><pre><span></span><code>$_ := set $myDict &quot;name4&quot; &quot;value4&quot;
+</code></pre></div>
+<p>Note that <code>set</code> <em>returns the dictionary</em> (a requirement of Go template functions),
+so you may need to trap the value as done above with the <code>$_</code> assignment.</p>
+<h2 id="unset">unset</h2>
+<p>Given a map and a key, delete the key from the map.</p>
+<div class="highlight"><pre><span></span><code>$_ := unset $myDict &quot;name4&quot;
+</code></pre></div>
+<p>As with <code>set</code>, this returns the dictionary.</p>
+<p>Note that if the key is not found, this operation will simply return. No error
+will be generated.</p>
+<h2 id="haskey">hasKey</h2>
+<p>The <code>hasKey</code> function returns <code>true</code> if the given dict contains the given key.</p>
+<div class="highlight"><pre><span></span><code>hasKey $myDict &quot;name1&quot;
+</code></pre></div>
+<p>If the key is not found, this returns <code>false</code>.</p>
+<h2 id="pluck">pluck</h2>
+<p>The <code>pluck</code> function makes it possible to give one key and multiple maps, and
+get a list of all of the matches:</p>
+<div class="highlight"><pre><span></span><code>pluck &quot;name1&quot; $myDict $myOtherDict
+</code></pre></div>
+<p>The above will return a <code>list</code> containing every found value (<code>[value1 otherValue1]</code>).</p>
+<p>If the give key is <em>not found</em> in a map, that map will not have an item in the
+list (and the length of the returned list will be less than the number of dicts
+in the call to <code>pluck</code>.</p>
+<p>If the key is <em>found</em> but the value is an empty value, that value will be
+inserted.</p>
+<p>A common idiom in Sprig templates is to uses <code>pluck... | first</code> to get the first
+matching key out of a collection of dictionaries.</p>
+<h2 id="dig">dig</h2>
+<p>The <code>dig</code> function traverses a nested set of dicts, selecting keys from a list
+of values. It returns a default value if any of the keys are not found at the
+associated dict.</p>
+<div class="highlight"><pre><span></span><code>dig &quot;user&quot; &quot;role&quot; &quot;humanName&quot; &quot;guest&quot; $dict
+</code></pre></div>
+<p>Given a dict structured like
+<div class="highlight"><pre><span></span><code>{
+  user: {
+    role: {
+      humanName: &quot;curator&quot;
+    }
+  }
+}
+</code></pre></div></p>
+<p>the above would return <code>"curator"</code>. If the dict lacked even a <code>user</code> field,
+the result would be <code>"guest"</code>.</p>
+<p>Dig can be very useful in cases where you'd like to avoid guard clauses,
+especially since Go's template package's <code>and</code> doesn't shortcut. For instance
+<code>and a.maybeNil a.maybeNil.iNeedThis</code> will always evaluate
+<code>a.maybeNil.iNeedThis</code>, and panic if <code>a</code> lacks a <code>maybeNil</code> field.)</p>
+<p><code>dig</code> accepts its dict argument last in order to support pipelining. For instance:
+<div class="highlight"><pre><span></span><code>merge a b c | dig &quot;one&quot; &quot;two&quot; &quot;three&quot; &quot;&lt;missing&gt;&quot;
+</code></pre></div></p>
+<h2 id="merge-mustmerge">merge, mustMerge</h2>
+<p>Merge two or more dictionaries into one, giving precedence to the dest dictionary:</p>
+<div class="highlight"><pre><span></span><code>$newdict := merge $dest $source1 $source2
+</code></pre></div>
+<p>This is a deep merge operation but not a deep copy operation. Nested objects that
+are merged are the same instance on both dicts. If you want a deep copy along
+with the merge than use the <code>deepCopy</code> function along with merging. For example,</p>
+<div class="highlight"><pre><span></span><code>deepCopy $source | merge $dest
+</code></pre></div>
+<p><code>mustMerge</code> will return an error in case of unsuccessful merge.</p>
+<h2 id="mergeoverwrite-mustmergeoverwrite">mergeOverwrite, mustMergeOverwrite</h2>
+<p>Merge two or more dictionaries into one, giving precedence from <strong>right to left</strong>, effectively
+overwriting values in the dest dictionary:</p>
+<p>Given:</p>
+<div class="highlight"><pre><span></span><code>dst:
+  default: default
+  overwrite: me
+  key: true
+
+src:
+  overwrite: overwritten
+  key: false
+</code></pre></div>
+<p>will result in:</p>
+<div class="highlight"><pre><span></span><code>newdict:
+  default: default
+  overwrite: overwritten
+  key: false
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$newdict := mergeOverwrite $dest $source1 $source2
+</code></pre></div>
+<p>This is a deep merge operation but not a deep copy operation. Nested objects that
+are merged are the same instance on both dicts. If you want a deep copy along
+with the merge than use the <code>deepCopy</code> function along with merging. For example,</p>
+<div class="highlight"><pre><span></span><code>deepCopy $source | mergeOverwrite $dest
+</code></pre></div>
+<p><code>mustMergeOverwrite</code> will return an error in case of unsuccessful merge.</p>
+<h2 id="keys">keys</h2>
+<p>The <code>keys</code> function will return a <code>list</code> of all of the keys in one or more <code>dict</code>
+types. Since a dictionary is <em>unordered</em>, the keys will not be in a predictable order.
+They can be sorted with <code>sortAlpha</code>.</p>
+<div class="highlight"><pre><span></span><code>keys $myDict | sortAlpha
+</code></pre></div>
+<p>When supplying multiple dictionaries, the keys will be concatenated. Use the <code>uniq</code>
+function along with <code>sortAlpha</code> to get a unqiue, sorted list of keys.</p>
+<div class="highlight"><pre><span></span><code>keys $myDict $myOtherDict | uniq | sortAlpha
+</code></pre></div>
+<h2 id="pick">pick</h2>
+<p>The <code>pick</code> function selects just the given keys out of a dictionary, creating a
+new <code>dict</code>.</p>
+<div class="highlight"><pre><span></span><code>$new := pick $myDict &quot;name1&quot; &quot;name2&quot;
+</code></pre></div>
+<p>The above returns <code>{name1: value1, name2: value2}</code></p>
+<h2 id="omit">omit</h2>
+<p>The <code>omit</code> function is similar to <code>pick</code>, except it returns a new <code>dict</code> with all
+the keys that <em>do not</em> match the given keys.</p>
+<div class="highlight"><pre><span></span><code>$new := omit $myDict &quot;name1&quot; &quot;name3&quot;
+</code></pre></div>
+<p>The above returns <code>{name2: value2}</code></p>
+<h2 id="values">values</h2>
+<p>The <code>values</code> function is similar to <code>keys</code>, except it returns a new <code>list</code> with
+all the values of the source <code>dict</code> (only one dictionary is supported).</p>
+<div class="highlight"><pre><span></span><code>$vals := values $myDict
+</code></pre></div>
+<p>The above returns <code>list["value1", "value2", "value 3"]</code>. Note that the <code>values</code>
+function gives no guarantees about the result ordering- if you care about this,
+then use <code>sortAlpha</code>.</p>
+<h2 id="deepcopy-mustdeepcopy">deepCopy, mustDeepCopy</h2>
+<p>The <code>deepCopy</code> and <code>mustDeepCopy</code> functions takes a value and makes a deep copy
+of the value. This includes dicts and other structures. <code>deepCopy</code> panics
+when there is a problem while <code>mustDeepCopy</code> returns an error to the template
+system when there is an error.</p>
+<div class="highlight"><pre><span></span><code>dict &quot;a&quot; 1 &quot;b&quot; 2 | deepCopy
+</code></pre></div>
+<h2 id="a-note-on-dict-internals">A Note on Dict Internals</h2>
+<p>A <code>dict</code> is implemented in Go as a <code>map[string]interface{}</code>. Go developers can
+pass <code>map[string]interface{}</code> values into the context to make them available
+to templates as <code>dict</code>s.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../defaults/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Default" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Default
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../encoding/" class="md-footer__link md-footer__link--next" aria-label="Next: Encoding" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Encoding
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.instant", "navigation.expand", "navigation.sections", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  </body>
+</html>
